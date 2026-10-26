@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<script>
+  const observer = new PerformanceObserver(entryList => {
+    for (entry of entryList.getEntries()) { console.log(entry); }
+  });
+  observer.observe({type: 'largest-contentful-paint', buffered: true});
+
+  setTimeout(() => {
+    let d = document.createElement('h2');
+    d.innerText = "Dynamic";
+    target.appendChild(d);
+    lowest.scrollIntoView();
+  }, 1000);
+</script>
+
+<div id="outer"></div>
+
+<script>
+  let content = '';
+  for (let i = 0; i < 100; i++) {
+    content += `<div>Line number ${i}</div>`
+  }
+  outer.innerHTML = content;
+</script>
+
+<div id="target"></div>
+<h1 id="lowest">The End</h1>

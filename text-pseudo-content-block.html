@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+  #content::before {
+    content: "This is some text";
+    display: block;
+  }
+</style>
+
+<script>
+  const observer = new PerformanceObserver(entryList => {
+    for (entry of entryList.getEntries()) { console.log(entry); }
+  });
+  observer.observe({type: 'largest-contentful-paint', buffered: true});
+</script>
+
+<div id="content"></div>

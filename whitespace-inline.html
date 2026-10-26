@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<script>
+  const observer = new PerformanceObserver(entryList => {
+    for (entry of entryList.getEntries()) { console.log(entry); }
+  });
+  observer.observe({type: 'largest-contentful-paint', buffered: true});
+</script>
+
+<div id="outer">
+  <button>Button A</button>
+  <button>Button AA</button>
+  <button>Button AAA</button>
+</div>
+
